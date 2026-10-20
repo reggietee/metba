@@ -4,6 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 /* ------------------------------------------------------------------
    MetBA design tokens
    Brand tokens are the source of truth. shadcn variables map onto them
@@ -12,17 +13,23 @@
 ------------------------------------------------------------------- */
 
 :root {
-  --paper: #f5f3ee;
-  --surface: #fbfaf7;
-  --ink: #111111;
-  --graphite: #2b2b2b;
-  --subtle: #6b6862; /* muted text, 5.0:1 on paper */
-  --stone: #8a8780; /* logo wall and decoration only, never text */
-  --line: #e3dfd7;
-  --line-strong: #cfcac0;
-  --brand: #1f4d47;
-  --night: #0b0b0c;
-  --night-raised: #151517;
+  /* Neutrals are tinted toward the brand green (hue ~170), never beige or pure grey. */
+  --paper: oklch(0.972 0.004 150); /* page */
+  --surface: oklch(0.987 0.003 150); /* raised panels */
+  --ink: oklch(0.2 0.014 172); /* text, primary buttons. 16.7:1 on paper */
+  --graphite: oklch(0.34 0.014 172); /* secondary text. 10.8:1 */
+  --subtle: oklch(0.5 0.014 172); /* metadata. 5.5:1 */
+  --stone: oklch(0.66 0.01 170); /* decoration only, never text */
+  --line: oklch(0.895 0.008 165); /* dividers */
+  --line-strong: oklch(0.8 0.01 165);
+  --control: oklch(0.6 0.012 170); /* form control borders, 3:1+ */
+  --brand: oklch(0.43 0.075 168); /* links, kickers, focus. 7.2:1 */
+
+  /* Fixed surfaces, identical in both themes. */
+  --night: oklch(0.175 0.012 172); /* featured event, footer */
+  --night-raised: oklch(0.21 0.012 172);
+  --deep: oklch(0.3 0.052 170); /* law-library green: announcement, join */
+  --brass: oklch(0.79 0.1 80); /* small highlights on dark surfaces only. 9.7:1 on night */
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -32,34 +39,36 @@
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
-  --secondary: #ebe8e1;
+  --secondary: oklch(0.935 0.008 165);
   --secondary-foreground: var(--ink);
-  --muted: #ebe8e1;
+  --muted: oklch(0.935 0.008 165);
   --muted-foreground: var(--subtle);
-  --accent: #ebe8e1;
+  --accent: oklch(0.935 0.008 165);
   --accent-foreground: var(--ink);
-  --destructive: #a1301f;
+  --destructive: oklch(0.5 0.17 28);
   --border: var(--line);
-  --input: var(--line-strong);
+  --input: var(--control);
   --ring: var(--brand);
   --radius: 3px;
 }
 
+/* Applied to the whole page in dark mode, and locally to night and deep sections. */
 .dark {
-  --paper: #0b0b0c;
-  --surface: #131315;
-  --ink: #f5f3ee;
-  --graphite: #c9c5bc;
-  --subtle: #a8a49c;
-  --stone: #8a8780;
-  --line: #26262a;
-  --line-strong: #3a3a3f;
-  --brand: #8fc1b5;
+  --paper: oklch(0.215 0.012 172);
+  --surface: oklch(0.245 0.012 172);
+  --ink: oklch(0.955 0.006 160);
+  --graphite: oklch(0.83 0.01 165);
+  --subtle: oklch(0.7 0.012 165);
+  --stone: oklch(0.55 0.01 170);
+  --line: oklch(0.3 0.012 172);
+  --line-strong: oklch(0.38 0.012 172);
+  --control: oklch(0.52 0.012 172);
+  --brand: oklch(0.8 0.085 168);
 
-  --secondary: #1c1c1f;
-  --muted: #1c1c1f;
-  --accent: #1c1c1f;
-  --destructive: #e07a6a;
+  --secondary: oklch(0.27 0.012 172);
+  --muted: oklch(0.27 0.012 172);
+  --accent: oklch(0.27 0.012 172);
+  --destructive: oklch(0.72 0.14 28);
 }
 
 @theme inline {
@@ -74,6 +83,9 @@
   --color-brand: var(--brand);
   --color-night: var(--night);
   --color-night-raised: var(--night-raised);
+  --color-deep: var(--deep);
+  --color-brass: var(--brass);
+  --color-control: var(--control);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -94,9 +106,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-franklin), "Franklin Gothic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-caslon-display);
+  --font-quote: var(--font-caslon-text), Georgia, serif;
   --font-heading: var(--font-display);
 
   --radius-sm: 2px;
@@ -105,52 +117,82 @@
   --radius-xl: 4px;
 
   --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Display type scale. Tight leading, slight negative tracking. */
+/* ------------------------------------------------------------------
+   Type scale. Perfect fourth (1.333) between steps.
+   Display: Libre Caslon Display, regular only, tightened.
+   Text: Libre Franklin. Sentence case everywhere; no mono, no all-caps.
+------------------------------------------------------------------- */
 @utility text-display-2xl {
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 7.2vw, 6rem);
-  line-height: 0.98;
-  letter-spacing: -0.015em;
+  font-size: clamp(2.75rem, 1.55rem + 5vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.022em;
   font-weight: 400;
 }
 @utility text-display-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5vw, 4.25rem);
-  line-height: 1.02;
-  letter-spacing: -0.012em;
+  font-size: clamp(2.25rem, 1.5rem + 3.2vw, 4.5rem);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
   font-weight: 400;
 }
 @utility text-display-lg {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 3.6vw, 3rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.875rem, 1.35rem + 2.1vw, 3.25rem);
+  line-height: 1.07;
+  letter-spacing: -0.016em;
   font-weight: 400;
 }
 @utility text-display-md {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  line-height: 1.1;
-  letter-spacing: -0.005em;
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2.125rem);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
   font-weight: 400;
 }
 @utility text-display-sm {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  line-height: 1.15;
+  line-height: 1.18;
+  letter-spacing: -0.008em;
   font-weight: 400;
 }
-
-/* Mono label: the quiet "technology" signal. */
-@utility text-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+/* Pull quotes and testimonials. */
+@utility text-quote {
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+/* Standfirst under a headline. */
+@utility text-lead {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  letter-spacing: -0.006em;
+}
+/* Running text. */
+@utility text-body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+/* Section kicker (Harvey-style small sans label, sentence case). */
+@utility text-kicker {
+  font-size: 0.875rem;
   line-height: 1.4;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+/* Dates, formats, CPD, reading time. */
+@utility text-meta {
+  font-size: 0.875rem;
+  line-height: 1.45;
   font-weight: 500;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 @utility container-site {
@@ -166,20 +208,6 @@
   }
 }
 
-/* Faint paper grain for framed media panels. */
-@utility grain {
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-}
-
 @layer base {
   * {
     @apply border-border;
@@ -188,10 +216,11 @@
     @apply font-sans;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    font-kerning: normal;
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv11";
+    font-variant-ligatures: common-ligatures;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -202,7 +231,7 @@
     outline-offset: 2px;
   }
   ::selection {
-    background: color-mix(in oklab, var(--brand) 25%, transparent);
+    background: color-mix(in oklab, var(--brand) 22%, transparent);
   }
   a {
     text-underline-offset: 0.2em;
@@ -210,18 +239,62 @@
   }
 }
 
-/* Scroll reveal. Hidden only when JS is running and motion is allowed. */
+/* ------------------------------------------------------------------
+   Motion. Few, deliberate moments; everything off under reduced motion.
+   - .motion-rise: hero copy entrance, staggered with --delay.
+   - .motion-wipe: image unveils left to right and settles from 1.06.
+   - [data-reveal]: same wipe, triggered once on scroll (see Reveal).
+------------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+  @keyframes wipe {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+  @keyframes settle {
+    from {
+      transform: scale(1.06);
+    }
+  }
+  .motion-rise {
+    animation: rise 800ms var(--ease-out-quart) both;
+    animation-delay: var(--delay, 0ms);
+  }
+  /* Wipe only on desktop: on phones the hero photo is the LCP element and must paint at once. */
+  @media (width >= 64rem) {
+    .motion-wipe {
+      animation: wipe 1300ms var(--ease-out-expo) both;
+      animation-delay: var(--delay, 0ms);
+    }
+  }
+  .motion-wipe img {
+    animation: settle 1800ms var(--ease-out-quart) both;
+    animation-delay: var(--delay, 0ms);
+  }
   .js [data-reveal] {
-    opacity: 0;
-    transform: translateY(8px);
-    transition:
-      opacity 700ms var(--ease-calm),
-      transform 700ms var(--ease-calm);
+    clip-path: inset(0 100% 0 0);
+  }
+  .js [data-reveal] img {
+    transform: scale(1.06);
   }
   .js [data-reveal][data-revealed="true"] {
-    opacity: 1;
+    clip-path: inset(0);
+    transition: clip-path 1300ms var(--ease-out-expo);
+  }
+  .js [data-reveal][data-revealed="true"] img {
     transform: none;
+    transition: transform 1800ms var(--ease-out-quart);
+  }
+  a {
+    transition:
+      color 200ms var(--ease-out-quart),
+      text-decoration-color 200ms var(--ease-out-quart);
   }
 }
 

@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = Number(process.env.PORT ?? 3123);
+const PORT = Number(process.env.PORT ?? 3310);
 
 export default defineConfig({
   testDir: "e2e",
@@ -8,5 +8,5 @@ export default defineConfig({
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: process.env.BASE_URL
     ? undefined
-    : { command: `npm run start -- -p ${PORT}`, port: PORT, reuseExistingServer: true },
+    : { command: `npm run start -- -p ${PORT}`, port: PORT, reuseExistingServer: false },
 });

@@ -39,14 +39,7 @@ export const events: MetbaEvent[] = [
     topics: ["tokenized-assets", "crypto-digital-assets"],
     speakers: [speakers.tan, speakers.lindqvist, speakers.reyes],
     cpd: [
-      {
-        jurisdiction: "Ontario",
-        hours: 1.5,
-        category: "substantive",
-        accreditationStatus: "accredited",
-        regulator: "Law Society of Ontario",
-        accreditationRef: "CPD-2026-48213",
-      },
+      { jurisdiction: "Ontario", hours: 1.5, category: "substantive", accreditationStatus: "none" },
       { jurisdiction: "England and Wales", hours: 1.5, category: "substantive", accreditationStatus: "none" },
     ],
     capacity: 500,

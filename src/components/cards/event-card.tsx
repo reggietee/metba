@@ -9,18 +9,18 @@ import type { MetbaEvent } from "@/lib/types";
 export function EventCard({ event }: { event: MetbaEvent }) {
   const full = event.capacity !== undefined && (event.registered ?? 0) >= event.capacity;
   return (
-    <article className="group relative flex h-full flex-col rounded-md border border-line bg-surface p-2">
-      <div className="grain relative aspect-[16/10] overflow-hidden rounded-sm">
+    <article className="group relative flex h-full flex-col border-t border-line pt-5">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-sm">
         <Image
           src={event.image}
           alt={event.imageAlt}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          className="object-cover transition-transform duration-700 ease-[var(--ease-out-quart)] group-hover:scale-[1.015]"
         />
       </div>
-      <div className="flex flex-1 flex-col p-4 pt-5">
-        <p className="text-label text-subtle">
+      <div className="flex flex-1 flex-col pt-5">
+        <p className="text-meta text-subtle">
           <LocalTime startsAt={event.startsAt} endsAt={event.endsAt} timezone={event.timezone} part="date" />
         </p>
         <h3 className="text-display-sm mt-3 text-balance">
@@ -28,7 +28,7 @@ export function EventCard({ event }: { event: MetbaEvent }) {
             {event.title}
           </Link>
         </h3>
-        <p className="text-label mt-auto flex flex-wrap gap-x-3 gap-y-1 pt-6 text-subtle">
+        <p className="text-meta mt-auto flex flex-wrap gap-x-3 gap-y-1 pt-6 text-subtle">
           <span>{formatLabels[event.format]}</span>
           {event.city ? <span>{event.city}</span> : null}
           <CpdTag cpd={event.cpd} />

@@ -40,7 +40,7 @@ export default async function StyleguidePage() {
           {swatches.map(([name, cls]) => (
             <li key={name}>
               <div className={`h-16 rounded-md border border-line ${cls}`} />
-              <p className="text-label mt-2 text-subtle">{name}</p>
+              <p className="text-meta mt-2 text-subtle">{name}</p>
             </li>
           ))}
         </ul>
@@ -55,7 +55,7 @@ export default async function StyleguidePage() {
         <p className="max-w-2xl text-lg leading-relaxed text-graphite">
           Body large in Geist Sans. Copy is neutral, professional and written in plain English.
         </p>
-        <p className="text-label text-subtle">Mono label · 12 Nov 2026 · 1.5 CPD hours</p>
+        <p className="text-meta text-subtle">Mono label · 12 Nov 2026 · 1.5 CPD hours</p>
       </section>
 
       <section aria-labelledby="sg-buttons" className="space-y-6">
@@ -81,7 +81,20 @@ export default async function StyleguidePage() {
       <section aria-labelledby="sg-trust" className="space-y-6">
         <h2 id="sg-trust" className="text-display-md">Trust and CPD wording</h2>
         <VerifiedBadge />
-        <CpdLabel cpd={events[0].cpd} />
+        {/* Fictional regulator: demonstrates both wording branches. */}
+        <CpdLabel
+          cpd={[
+            {
+              jurisdiction: "Example jurisdiction",
+              hours: 1.5,
+              category: "substantive",
+              accreditationStatus: "accredited",
+              regulator: "Example Regulator",
+              accreditationRef: "SAMPLE-0001",
+            },
+            { jurisdiction: "Another jurisdiction", hours: 1, category: "ethics", accreditationStatus: "none" },
+          ]}
+        />
       </section>
 
       <section aria-labelledby="sg-cards">

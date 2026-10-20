@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/** Fades content up once when it enters the viewport. Disabled under reduced motion via CSS. */
+/** Unveils an image once when it enters the viewport. Disabled under reduced motion via CSS. */
 export function Reveal({
   children,
   className,

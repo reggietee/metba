@@ -6,19 +6,18 @@ import { cn } from "@/lib/utils"
 
 // Restyled to MetBA tokens: rectangular, ink on paper, 1px borders, no shadows.
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-md border text-[0.9375rem] font-medium whitespace-nowrap transition-colors duration-200 select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-md border text-[0.9375rem] font-medium whitespace-nowrap transition-[color,background-color,border-color,transform] duration-200 ease-[var(--ease-out-quart)] select-none active:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default: "border-ink bg-ink text-paper hover:bg-graphite hover:border-graphite",
-        outline: "border-line-strong bg-transparent text-ink hover:border-ink",
+        outline: "border-control bg-transparent text-ink hover:border-ink",
         ghost: "border-transparent bg-transparent text-ink hover:bg-accent",
         link: "border-transparent px-0! text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink",
-        // For dark sections and photography.
-        inverse: "border-[#f5f3ee] bg-[#f5f3ee] text-[#111111] hover:bg-white hover:border-white",
-        "outline-inverse":
-          "border-white/40 bg-transparent text-[#f5f3ee] hover:border-white hover:bg-white/5",
-        destructive: "border-destructive bg-destructive text-white hover:opacity-90",
+        // Use inside .dark sections: tokens there are already inverted.
+        inverse: "border-ink bg-ink text-paper hover:bg-graphite hover:border-graphite",
+        "outline-inverse": "border-control bg-transparent text-ink hover:border-ink",
+        destructive: "border-destructive bg-destructive text-paper hover:opacity-90",
         secondary: "border-transparent bg-secondary text-ink hover:bg-accent",
       },
       size: {

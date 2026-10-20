@@ -11,7 +11,7 @@ export function CpdLabel({ cpd, className }: { cpd: EventCpd[]; className?: stri
     <ul className={cn("space-y-2", className)}>
       {cpd.map((c) => (
         <li key={`${c.jurisdiction}-${c.category}`} className="text-sm leading-snug">
-          <span className="text-label mr-2 text-ink">
+          <span className="text-meta mr-2 text-ink">
             {formatHours(c.hours)} · {cpdCategoryLabels[c.category]} · {c.jurisdiction}
           </span>
           <span className="block text-subtle">{cpdStatement(c)}</span>

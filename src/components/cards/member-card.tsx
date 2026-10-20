@@ -13,7 +13,7 @@ export function MemberCard({ member }: { member: Member }) {
     .join("")
     .slice(0, 2);
   return (
-    <article className="relative flex h-full flex-col rounded-md border border-line bg-surface p-5">
+    <article className="relative flex h-full flex-col border-t border-line pt-5">
       <div className="flex items-start gap-4">
         <AvatarInitials initials={initials} className="size-14 text-xl" />
         <div className="min-w-0">
@@ -23,7 +23,7 @@ export function MemberCard({ member }: { member: Member }) {
             </Link>
           </h3>
           <p className="mt-1 text-sm text-graphite">{member.headline}</p>
-          <p className="text-label mt-2 text-subtle">
+          <p className="text-meta mt-2 text-subtle">
             {memberTypeLabels[member.memberType]} · {member.city}, {member.country}
           </p>
         </div>
@@ -31,7 +31,7 @@ export function MemberCard({ member }: { member: Member }) {
       {member.status === "verified" ? <VerifiedBadge className="mt-5" /> : null}
       <ul className="mt-4 flex flex-wrap gap-1.5">
         {member.topics.map((t) => (
-          <li key={t} className="text-label rounded-sm border border-line px-2 py-1 text-subtle">
+          <li key={t} className="text-meta rounded-sm bg-secondary px-2 py-1 text-graphite">
             {topicBySlug[t].short}
           </li>
         ))}

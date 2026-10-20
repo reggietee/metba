@@ -19,16 +19,17 @@ export function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Logo tone="light" className="h-12" />
-            <h2 className="text-display-md mt-10 max-w-md text-balance">
-              Developments in emerging technology law, once a month.
-            </h2>
+            <h2 className="text-display-md mt-10">The Docket</h2>
+            <p className="mt-2 max-w-sm text-[0.9375rem] text-graphite">
+              The MetBA newsletter. New rules, cases and enforcement, once a month.
+            </p>
             <NewsletterForm className="mt-6 max-w-md" />
           </div>
 
           <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-6 lg:col-start-7">
             {footerNav.map((group) => (
               <div key={group.title}>
-                <h3 className="text-label text-subtle">{group.title}</h3>
+                <h3 className="text-meta text-subtle">{group.title}</h3>
                 <ul className="mt-4 space-y-3 text-[0.9375rem]">
                   {group.links.map((link) => (
                     <li key={link.label}>
@@ -41,7 +42,7 @@ export function SiteFooter() {
               </div>
             ))}
             <div>
-              <h3 className="text-label text-subtle">Follow</h3>
+              <h3 className="text-meta text-subtle">Follow</h3>
               <ul className="mt-4 space-y-3 text-[0.9375rem]">
                 {socials.map((s) => (
                   <li key={s.label}>
@@ -58,9 +59,9 @@ export function SiteFooter() {
 
         <div className="mt-16 flex flex-col gap-6 border-t border-line pt-8 text-sm text-subtle md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
-            <p>© {2026} {site.name}</p>
             {/* [DRAFT] */}
             <p>MetBA is a professional community. It does not provide legal advice or verify licensure.</p>
+            <p>© 2026 {site.name}</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <ul className="flex flex-wrap gap-x-5 gap-y-2">

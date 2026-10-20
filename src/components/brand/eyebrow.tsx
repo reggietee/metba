@@ -14,10 +14,10 @@ export function Eyebrow({
   return (
     <Tag
       className={cn(
-        "text-label",
+        "text-kicker",
         tone === "brand" && "text-brand",
         tone === "subtle" && "text-subtle",
-        tone === "inverse" && "text-[#a8a49c]",
+        tone === "inverse" && "text-brass",
         className,
       )}
     >

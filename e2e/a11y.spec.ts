@@ -9,6 +9,7 @@ for (const scheme of ["light", "dark"] as const) {
       await page.emulateMedia({ reducedMotion: "reduce" });
       await page.addInitScript((t) => localStorage.setItem("theme", t), scheme);
       await page.goto(route);
+      await expect(page).toHaveTitle(/MetBA/);
       const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
       expect(results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(", ")}`)).toEqual([]);
     });

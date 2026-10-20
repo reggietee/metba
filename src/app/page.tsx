@@ -6,15 +6,16 @@ import { FeaturedEvent } from "@/components/home/featured-event";
 import { Hero } from "@/components/home/hero";
 import { JoinCta } from "@/components/home/join-cta";
 import { Latest } from "@/components/home/latest";
-import { ProofStrip } from "@/components/home/proof-strip";
-import { TopicsGrid } from "@/components/home/topics-grid";
+import { NewsletterMasthead } from "@/components/home/newsletter-masthead";
+import { Proof } from "@/components/home/proof";
+import { TopicsIndex } from "@/components/home/topics-index";
 import {
   getFeaturedEvent,
   getLatestInsights,
   getLatestRecap,
   getPublicStats,
-  getTopicCounts,
   getTopics,
+  getUpcomingEvents,
 } from "@/lib/data";
 import { site } from "@/lib/site";
 
@@ -34,11 +35,11 @@ const orgJsonLd = {
 };
 
 export default async function HomePage() {
-  const [stats, featured, topics, counts, insights, recap] = await Promise.all([
+  const [stats, featured, upcoming, topics, insights, recap] = await Promise.all([
     getPublicStats(),
     getFeaturedEvent(),
+    getUpcomingEvents(),
     getTopics(),
-    getTopicCounts(),
     getLatestInsights(3),
     getLatestRecap(),
   ]);
@@ -46,12 +47,15 @@ export default async function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
-      <Hero countries={stats.countries} />
-      <ProofStrip stats={stats} />
+      <Hero />
+      <Proof stats={stats} />
       <Audiences />
-      {featured ? <FeaturedEvent event={featured} /> : null}
-      <TopicsGrid topics={topics} counts={counts} />
+      {featured ? (
+        <FeaturedEvent event={featured} upcoming={upcoming.filter((e) => e.slug !== featured.slug).slice(0, 3)} />
+      ) : null}
+      <TopicsIndex topics={topics} />
       <Latest insights={insights} recap={recap} />
+      <NewsletterMasthead />
       <DirectoryTeaser />
       <JoinCta />
     </>

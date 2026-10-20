@@ -50,7 +50,7 @@ export function SectionHeading({
   return (
     <div className={cn("mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between", className)}>
       <div className="max-w-3xl">
-        {eyebrow ? <p className="text-label mb-4 text-brand">{eyebrow}</p> : null}
+        {eyebrow ? <p className="text-kicker mb-5 text-brand">{eyebrow}</p> : null}
         <h2 id={id} className="text-display-lg text-balance">
           {title}
         </h2>

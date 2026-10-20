@@ -50,51 +50,57 @@ One more option: **Supabase Auth** also does magic links, LinkedIn OIDC and nati
 
 ## 3. Design system
 
-### Tokens (refined)
-
-I checked contrast against WCAG AA. One change was needed: **Stone `#8A8780` is only 3.2:1 on Paper**, which fails for body text. I've split it into two tokens:
-
-| Token | Light | Dark | Use |
-|---|---|---|---|
-| `paper` | `#F5F3EE` | `#0B0B0C` | Page background |
-| `ink` | `#111111` (17:1) | `#F5F3EE` (17.7:1) | Text, primary button |
-| `graphite` | `#2B2B2B` (12.8:1) | `#C9C5BC` | Secondary text |
-| `muted` (new) | `#6B6862` (5.0:1) | `#A8A49C` (7.9:1) | Metadata, captions. Replaces Stone for any text |
-| `stone` | `#8A8780` | `#8A8780` | Logo wall and decorative marks only, never text |
-| `line` | `#E3DFD7` | `#26262A` | 1px borders and dividers |
-| `night` | `#0B0B0C` | `#0B0B0C` | Dark feature sections (always dark in both modes) |
-| `night-raised` | `#151517` | `#151517` | Cards inside dark sections |
-| `accent` | `#1F4D47` (8.6:1) | `#8FC1B5` (9.8:1) | Links, small labels, focus rings |
-
-- **Radius:** 3px on buttons and cards (`--radius: 3px`). Thin 1px borders. No shadows except a 1px inset on framed media.
-- **Focus:** 2px accent outline with a 2px offset on every interactive element. Inside dark sections it uses the light accent.
-- **Framed media panel** (taken from Harvey): image inset in a `line`-bordered panel with a very faint paper-grain SVG noise overlay at about 4% opacity.
+Revised after the design pass (typeset, bolder, colorize, critique, polish, animate). The original tokens from the brief read as an AI template, and you approved departing from them. Design context lives in `.impeccable.md`; tokens live in `src/app/globals.css`.
 
 ### Type
 
-- **Display:** Instrument Serif. Its single weight and tight, high-contrast forms suit large headlines. Fluid sizes from `clamp(2.5rem, 6vw, 5.5rem)` (hero) down to `1.75rem` (card titles), with leading of 1.0 to 1.1 and letter-spacing of -0.01em.
-- **Body and UI:** Geist Sans, 16 to 18px body, leading 1.6, max line length about 68ch.
-- **Labels:** Geist Mono, 11 to 12px, uppercase, tracking 0.08em, `muted` colour (accent for eyebrow labels). Used for dates, CPD hours, formats and tags.
+- **Display:** Libre Caslon Display, regular only, tightened tracking. Caslon is the typeface of legal printing.
+- **Quotes:** Libre Caslon Text italic.
+- **Text and UI:** Libre Franklin, a Franklin Gothic revival (the American newspaper sans).
+- **No monospace and no all-caps labels.** Small labels are sentence-case Franklin (`text-kicker`, `text-meta`).
+- **Scale:** perfect fourth (1.333). Fluid `clamp()` for display sizes; body text fixed at 17px with 1.65 line height.
+- **Fallback:** a hand-tuned fallback face (Times at 90.3%) so the hero doesn't reflow when the web font loads (CLS 0).
 
-### Motion
+### Colour (OKLCH)
 
-Fade plus an 8px rise on scroll reveal (600ms ease-out, IntersectionObserver, runs once), and slow image fade-ins. All of it is turned off under `prefers-reduced-motion`. No parallax, no carousels.
+| Token | Use | Contrast |
+|---|---|---|
+| `paper` oklch(0.972 0.004 150) | Page | |
+| `ink` oklch(0.2 0.014 172) | Text, primary buttons | 16.7:1 |
+| `graphite` oklch(0.34 0.014 172) | Secondary text | 10.8:1 |
+| `subtle` oklch(0.5 0.014 172) | Metadata | 5.5:1 |
+| `control` oklch(0.6 0.012 170) | Form control borders | 3:1+ |
+| `brand` oklch(0.43 0.075 168) | Links, kickers, focus | 7.2:1 |
+| `night` oklch(0.175 0.012 172) | Featured event, footer | |
+| `deep` oklch(0.3 0.052 170) | Law-library green: announcement bar, join section | |
+| `brass` oklch(0.79 0.1 80) | Small highlights on dark surfaces only | 9.7:1 on night |
 
-### Light and dark
+- **Neutrals:** tinted toward the brand green, never beige or pure grey.
+- **Dark mode:** pages sit one step lighter than the night sections, so the emphasis rhythm survives.
 
-`next-themes` with a `system` default and a manual toggle in the footer. Pages are designed light-first, and the dark sections (featured event, join CTA, footer) use `night` in both modes.
+### Shape and motion
 
-### Imagery
+- **Shape:** radius 2 to 4px and 1px rules.
+- **No framed cards on the homepage.** Lists are ruled rows.
+- **Hero entrance:** copy rises in a short stagger. The photo settles from a slight zoom, and on desktop it also unveils with a left-to-right wipe. The wipe is desktop-only because on phones the photo is the LCP element.
+- **Scroll moments:** two image wipes, triggered once.
+- **Interaction:** button press state, underline colour transitions, the announcement bar fades out when dismissed.
+- **Reduced motion:** everything is off under `prefers-reduced-motion`.
 
-- **Phase 0:** cinematic city and architecture photos from Unsplash (free licence), named in a `CREDITS.md`, as placeholders until your event photos arrive. **(Q4)**
-- **Hero video:** the existing intro video, if it holds up. The poster image is what loads first (it is the largest element, so it drives load speed). The video loads lazily and doesn't autoplay under reduced-motion or Save-Data.
-- **Banned subjects:** a short list goes in `CONTRIBUTING.md` for editors (circuit boards, network nodes, blockchain cubes, robot hands, gavels, scales of justice, handshakes).
+### Homepage composition
 
-### Components (Phase 0)
+1. Split hero with an image that bleeds off the right edge
+2. Proof as a sentence
+3. Audience rows
+4. Dark next-event section with a docket list of upcoming events
+5. Two-column topics contents
+6. Lead insight with a text sidebar
+7. "The Docket" newsletter masthead (name is `[DRAFT]`)
+8. Directory search line
+9. Deep-green join band
+10. Dark footer
 
-`AnnouncementBar`, `UtilityBar`, `SiteHeader` (with mobile sheet nav), `SiteFooter`, `Button` (primary/ink, secondary/outline, ghost, on-dark variants), `Eyebrow` (mono label), `SectionHeading`, `Card`, `EventCard`, `FeaturedEventCard`, `InsightCard`, `RecapCard`, `TopicTile`, `MemberCard`, `ProofStrip`, `AudienceTriad`, `DirectorySearchTeaser`, `JoinCTA`, `NewsletterForm`, `FramedMedia`, `Hero`, `CpdLabel` (enforces the accreditation wording rule, see 6.3), `VerifiedBadge`, `LocalTime` (formats event times in the viewer's timezone), `Reveal`, `ThemeToggle`, `CookieNotice`.
-
-There is also a `/styleguide` route (hidden from search engines) showing every token and component in both modes, so you can review the system in one place.
+`/styleguide` shows every token and component in both modes.
 
 ## 4. Routes
 
