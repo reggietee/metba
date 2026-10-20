@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CpdLabel } from "@/components/brand/cpd-label";
 import { LocalTime } from "@/components/brand/local-time";
 import { Reveal } from "@/components/brand/reveal";
+import { EventList } from "@/components/page/event-row";
 import { Button } from "@/components/ui/button";
 import { formatLabels } from "@/lib/format";
 import type { MetbaEvent } from "@/lib/types";
@@ -89,29 +90,9 @@ export function FeaturedEvent({ event, upcoming }: { event: MetbaEvent; upcoming
                 Full calendar
               </Link>
             </div>
-            <ul className="mt-6 border-b border-line">
-              {upcoming.map((e) => (
-                <li key={e.slug} className="group relative border-t border-line">
-                  <div className="grid gap-1 py-5 md:grid-cols-12 md:items-baseline md:gap-6">
-                    <p className="text-meta text-subtle md:col-span-3 lg:col-span-6">
-                      <LocalTime startsAt={e.startsAt} endsAt={e.endsAt} timezone={e.timezone} part="date" />
-                    </p>
-                    <p className="font-display text-xl leading-snug md:col-span-6 md:text-2xl lg:col-span-4">
-                      <Link
-                        href={`/events/${e.slug}`}
-                        className="decoration-line-strong underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline"
-                      >
-                        {e.title}
-                      </Link>
-                    </p>
-                    <p className="text-meta text-subtle md:col-span-3 md:text-right lg:col-span-2">
-                      {formatLabels[e.format]}
-                      {e.city ? `, ${e.city}` : ""}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6">
+              <EventList events={upcoming} />
+            </div>
           </div>
         ) : null}
       </div>

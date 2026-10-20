@@ -356,20 +356,21 @@ Nothing paid is created without your go-ahead.
 Each phase ends with a commit, a preview deployment, and a stop for your review.
 
 ### Phase 0: Plan and look
-- [ ] PLAN.md approved
-- [ ] Next.js 16 + TypeScript + Tailwind v4 + shadcn scaffold, ESLint, Prettier, Vitest
-- [ ] Tokens, fonts, light and dark themes, `/styleguide`
-- [ ] Components listed in section 3
-- [ ] Static homepage with typed mock data (`lib/mock/`): about 12 events, 9 insights, 30 members, 8 topics, leadership
-- [ ] Banned-copy test
-- [ ] Vercel project and preview deployment (needs your Vercel team, **Q13**)
-- [ ] **Stop: review the look and feel**
+- [x] PLAN.md approved
+- [x] Next.js 16 + TypeScript + Tailwind v4 + shadcn scaffold, ESLint, Vitest, Playwright
+- [x] Tokens, fonts, light and dark themes, `/styleguide` (revised in the design pass, see section 3)
+- [x] Homepage with typed mock data behind `src/lib/data.ts`
+- [x] Banned-copy test
+- [ ] Vercel project and preview deployment (waiting on your GitHub and Vercel projects)
 
 ### Phase 1: Public pages
-- [ ] About, Membership, For Students, For the Public, Code of Conduct, Accessibility, Terms, Privacy (`[DRAFT – needs legal review]`)
-- [ ] Insights list and article, Topics index and hubs, Events list and detail (upcoming view), past-events archive shell
-- [ ] A data-access layer with the same interface for mock and real data, so pages don't change when Supabase arrives
-- [ ] Redirects, metadata, JSON-LD, sitemap, robots
+- [x] About, Membership, For Students, For the Public
+- [x] Code of Conduct, Accessibility, Terms, Cookies, Privacy (all `[DRAFT]`, legal ones marked for legal review)
+- [x] Insights list and article, Topics index and hubs
+- [x] Events list, event page (upcoming view and recap view at the same URL), past-events archive with filters
+- [x] Data-access layer with the same interface for mock and real data
+- [x] Redirects (single 301 each), metadata, JSON-LD (Organization, Event, Article, FAQPage), sitemap, robots, 404 page
+- [x] e2e: axe on every route in both themes, 360px overflow on every route, redirect status codes
 - [ ] **Stop: review**
 
 ### Phase 2: Members

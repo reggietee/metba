@@ -63,12 +63,15 @@ export type Speaker = {
   title: string;
   organisation: string;
   initials: string;
+  bio?: string;
 };
 
 export type MetbaEvent = {
   slug: string;
   title: string;
   summary: string;
+  description?: string[];
+  agenda?: { time: string; item: string }[];
   startsAt: string; // ISO 8601 with offset
   endsAt: string;
   timezone: string; // IANA
@@ -86,10 +89,19 @@ export type MetbaEvent = {
   priceCents: number;
 };
 
+/** Article body as simple blocks; the CMS editor (Phase 4) produces the same shape. */
+export type Block =
+  | { type: "p"; text: string }
+  | { type: "h2"; text: string }
+  | { type: "quote"; text: string; cite?: string }
+  | { type: "ul"; items: string[] };
+
 export type Insight = {
   slug: string;
   title: string;
   dek: string;
+  body?: Block[];
+  relatedEvents?: string[];
   author: string;
   publishedAt: string;
   readingMinutes: number;
@@ -102,6 +114,9 @@ export type Recap = {
   eventSlug: string;
   title: string;
   summary: string;
+  takeaways?: string[];
+  speakers?: Speaker[];
+  recordingVisibility?: "public" | "members";
   heldAt: string;
   format: EventFormat;
   topics: TopicSlug[];
@@ -115,6 +130,8 @@ export type Person = {
   organisation: string;
   group: "board" | "advisory";
 };
+
+export type Faq = { q: string; a: string };
 
 export type SiteStats = {
   members: number;

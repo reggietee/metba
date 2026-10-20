@@ -4,11 +4,11 @@ import { ArrowRight } from "lucide-react";
 import type { Topic } from "@/lib/types";
 
 /** The eight practice areas as a two-column contents page. */
-export function TopicsIndex({ topics }: { topics: Topic[] }) {
+export function TopicsIndex({ topics, hideHeading }: { topics: Topic[]; hideHeading?: boolean }) {
   return (
     <section aria-labelledby="topics-title" className="py-28 md:py-40">
       <div className="container-site">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
+        <div className={hideHeading ? "sr-only" : "grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8"}>
           <h2 id="topics-title" className="text-display-lg lg:col-span-5">
             Eight areas of practice
           </h2>

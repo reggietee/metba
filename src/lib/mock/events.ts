@@ -1,11 +1,12 @@
 import type { MetbaEvent, Recap, Speaker } from "@/lib/types";
 
-// Mock data for design review. Speakers are fictional placeholders.
-const sp = (id: string, name: string, title: string, organisation: string): Speaker => ({
+// Mock data for design review. Speakers, bios and events are fictional placeholders.
+const sp = (id: string, name: string, title: string, organisation: string, bio: string): Speaker => ({
   id,
   name,
   title,
   organisation,
+  bio,
   initials: name
     .split(" ")
     .map((p) => p[0])
@@ -14,14 +15,69 @@ const sp = (id: string, name: string, title: string, organisation: string): Spea
 });
 
 const speakers = {
-  okafor: sp("okafor", "Adaeze Okafor", "Partner, Fintech and Digital Assets", "Lagos"),
-  lindqvist: sp("lindqvist", "Erik Lindqvist", "Counsel, Capital Markets", "Stockholm"),
-  tan: sp("tan", "Mei Ling Tan", "Head of Regulatory", "Singapore"),
-  moreau: sp("moreau", "Camille Moreau", "Associate, Data Protection", "Paris"),
-  shah: sp("shah", "Priya Shah", "Legal Engineer", "London"),
-  reyes: sp("reyes", "Daniel Reyes", "General Counsel", "Toronto"),
-  haddad: sp("haddad", "Nadia Haddad", "Senior Associate, Technology", "Dubai"),
-  brennan: sp("brennan", "Tom Brennan", "Professor of Law", "Sydney"),
+  okafor: sp(
+    "okafor",
+    "Adaeze Okafor",
+    "Partner, Fintech and Digital Assets",
+    "Okafor & Partners, Lagos",
+    "Advises exchanges, custodians and payment firms on licensing across West Africa.",
+  ),
+  lindqvist: sp(
+    "lindqvist",
+    "Erik Lindqvist",
+    "Counsel, Capital Markets",
+    "Stockholm",
+    "Works on fund structuring and the application of EU securities rules to tokenized instruments.",
+  ),
+  tan: sp(
+    "tan",
+    "Mei Ling Tan",
+    "Head of Regulatory",
+    "Digital asset custodian, Singapore",
+    "Leads regulatory engagement for a licensed custodian and previously practised in financial services regulation.",
+  ),
+  moreau: sp(
+    "moreau",
+    "Camille Moreau",
+    "Associate, Data Protection",
+    "Moreau Avocats, Paris",
+    "Advises on data protection programmes, cross-border transfers and AI deployment reviews.",
+  ),
+  shah: sp(
+    "shah",
+    "Priya Shah",
+    "Legal Engineer",
+    "London",
+    "Designs legal technology workflows and writes about supervision of AI tools in practice.",
+  ),
+  reyes: sp(
+    "reyes",
+    "Daniel Reyes",
+    "General Counsel",
+    "Asset manager, Toronto",
+    "Oversees legal and compliance for an asset manager exploring tokenized fund units.",
+  ),
+  haddad: sp(
+    "haddad",
+    "Nadia Haddad",
+    "Senior Associate, Technology",
+    "Dubai",
+    "Advises platforms on content regulation, consumer protection and online safety obligations.",
+  ),
+  brennan: sp(
+    "brennan",
+    "Tom Brennan",
+    "Professor of Law",
+    "Sydney",
+    "Researches platform regulation and teaches technology law.",
+  ),
+  ito: sp(
+    "ito",
+    "Haruka Ito",
+    "Partner, Technology Disputes",
+    "Tokyo",
+    "Acts in disputes involving smart contracts, software and decentralised protocols.",
+  ),
 };
 
 export const events: MetbaEvent[] = [
@@ -30,6 +86,17 @@ export const events: MetbaEvent[] = [
     title: "Tokenized funds across jurisdictions",
     summary:
       "How Singapore, the EU and Ontario are approaching tokenized fund units, and what counsel should expect in the next twelve months.",
+    description: [
+      "Tokenized fund units have moved from pilots to live products in several markets. Regulators are approaching them through existing fund, custody and market infrastructure rules rather than new regimes, with different results.",
+      "The panel compares the approaches in Singapore, the European Union and Ontario, looks at where they converge, and discusses the questions counsel are being asked by fund managers, custodians and distributors.",
+    ],
+    agenda: [
+      { time: "0:00", item: "Introduction and framing" },
+      { time: "0:10", item: "Singapore: project work and the licensing perimeter" },
+      { time: "0:30", item: "European Union: fund rules and settlement" },
+      { time: "0:50", item: "Ontario: distribution and custody" },
+      { time: "1:10", item: "Questions from members" },
+    ],
     startsAt: "2026-11-12T12:00:00-05:00",
     endsAt: "2026-11-12T13:30:00-05:00",
     timezone: "America/Toronto",
@@ -52,6 +119,10 @@ export const events: MetbaEvent[] = [
     title: "AI in practice: professional duties for the working lawyer",
     summary:
       "A practical session on supervision, confidentiality and competence when legal teams adopt AI tools.",
+    description: [
+      "Most professional conduct rules were written before generative AI, but they already say a good deal about how lawyers should use it. This session works through supervision, confidentiality, competence and client communication using practical scenarios.",
+      "Attendees in London can join in person; others can join online.",
+    ],
     startsAt: "2026-11-26T17:00:00+00:00",
     endsAt: "2026-11-26T18:00:00+00:00",
     timezone: "Europe/London",
@@ -70,8 +141,10 @@ export const events: MetbaEvent[] = [
   {
     slug: "online-safety-regimes-compared",
     title: "Online safety regimes compared",
-    summary:
-      "The UK Online Safety Act, the EU Digital Services Act and Australia's framework, side by side.",
+    summary: "The UK Online Safety Act, the EU Digital Services Act and Australia's framework, side by side.",
+    description: [
+      "Three of the most developed online safety frameworks take different routes to similar goals. The speakers compare scope, risk assessment duties, transparency obligations and enforcement, and discuss what a platform operating in all three needs to plan for.",
+    ],
     startsAt: "2026-12-09T09:00:00+11:00",
     endsAt: "2026-12-09T10:00:00+11:00",
     timezone: "Australia/Sydney",
@@ -87,6 +160,9 @@ export const events: MetbaEvent[] = [
     slug: "metba-singapore-roundtable-2027",
     title: "MetBA Singapore roundtable",
     summary: "An evening roundtable for members working on digital asset licensing in Asia.",
+    description: [
+      "A small, discussion-led evening for members in Singapore and the region. The conversation is held under the Chatham House rule and is not recorded.",
+    ],
     startsAt: "2027-01-21T18:30:00+08:00",
     endsAt: "2027-01-21T21:00:00+08:00",
     timezone: "Asia/Singapore",
@@ -110,10 +186,67 @@ export const recaps: Recap[] = [
     title: "DAO liability after recent rulings",
     summary:
       "Panelists traced how courts have treated governance token holders and what that means for protocol design.",
+    takeaways: [
+      "Courts have looked at how governance actually operates, not only at how a DAO describes itself.",
+      "Active participation in governance has been treated differently from passive token holding.",
+      "Wrapping a DAO in a legal entity changes the analysis but does not settle every question.",
+      "Protocol teams are revisiting documentation and voting design with liability in mind.",
+    ],
+    speakers: [speakers.ito, speakers.lindqvist],
+    recordingVisibility: "members",
     heldAt: "2026-09-24T12:00:00-04:00",
     format: "webinar",
     topics: ["blockchain-web3", "platform-liability"],
     image: "/images/presentation.jpg",
     imageAlt: "Speaker presenting to a seated audience in a dark hall",
+  },
+  {
+    eventSlug: "privacy-enforcement-trends-2026",
+    title: "Privacy enforcement trends in 2026",
+    summary: "Where data protection regulators focused their attention this year, and what has changed in remedies.",
+    takeaways: [
+      "Enforcement has concentrated on a smaller number of larger cases.",
+      "Regulators are paying closer attention to AI training data.",
+      "Cross-border cooperation between authorities has become more visible.",
+    ],
+    speakers: [speakers.moreau],
+    recordingVisibility: "public",
+    heldAt: "2026-06-18T16:00:00+02:00",
+    format: "webinar",
+    topics: ["privacy", "ai-governance"],
+    image: "/images/paris.jpg",
+    imageAlt: "Paris at dusk with the Eiffel Tower across the Seine",
+  },
+  {
+    eventSlug: "metba-toronto-summer-reception-2026",
+    title: "MetBA Toronto summer reception",
+    summary: "Members met in Toronto for an evening of conversation on digital asset regulation in Canada.",
+    takeaways: [
+      "Members compared notes on registration questions for crypto trading platforms.",
+      "Several attendees are forming a working group on tokenized funds.",
+    ],
+    speakers: [speakers.reyes],
+    heldAt: "2026-06-05T18:00:00-04:00",
+    format: "in_person",
+    topics: ["crypto-digital-assets", "tokenized-assets"],
+    image: "/images/toronto.jpg",
+    imageAlt: "Toronto skyline and the CN Tower at sunset",
+  },
+  {
+    eventSlug: "smart-contract-disputes-2025",
+    title: "Smart contract disputes in practice",
+    summary: "Arbitrators and litigators on evidence, interpretation and remedies when code is part of the bargain.",
+    takeaways: [
+      "Tribunals still look for the parties' intention, with code as evidence of it.",
+      "Expert evidence on how a contract executed is often decisive.",
+      "Choice of forum clauses in protocol terms are receiving more scrutiny.",
+    ],
+    speakers: [speakers.ito],
+    recordingVisibility: "members",
+    heldAt: "2025-11-20T09:00:00+09:00",
+    format: "hybrid",
+    topics: ["blockchain-web3", "legal-tech"],
+    image: "/images/chicago.jpg",
+    imageAlt: "Chicago skyline along the lake at dusk",
   },
 ];
