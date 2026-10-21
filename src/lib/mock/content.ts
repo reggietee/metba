@@ -211,8 +211,9 @@ export const membershipFaqs: Faq[] = [
   },
 ];
 
-// Placeholder counts until the database exists.
-export const stats: SiteStats = { members: 1240, countries: 46, eventsHeld: 31 };
+// Counts until the database exists. Members confirmed at about 310 (Oct 2026).
+// Countries and events held are not yet confirmed, so they are 0, which keeps them hidden.
+export const stats: SiteStats = { members: 310, countries: 0, eventsHeld: 0 };
 
 // Proposed thresholds (PLAN.md Q6). A count below its threshold is hidden.
 export const statThresholds: SiteStats = { members: 250, countries: 15, eventsHeld: 10 };

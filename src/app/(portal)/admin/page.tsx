@@ -23,8 +23,8 @@ export default async function AdminOverview() {
       <div className="grid border-b border-line md:grid-cols-3">
         {[
           ["Applications waiting", String(waiting), "/admin/applications"],
-          ["Verified members", "1,240", "/admin#members"],
-          ["Registered for next event", "312", "/admin/events"],
+          ["Verified members", "310", "/admin#members"],
+          ["Registered for next event", "118", "/admin/events"],
         ].map(([label, value, href], i) => (
           <Link
             key={label}

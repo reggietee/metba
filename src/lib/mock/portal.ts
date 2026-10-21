@@ -281,9 +281,9 @@ export const applications: Application[] = [
 
 export const liveSession = {
   eventSlug: "tokenized-funds-across-jurisdictions",
-  registered: 312,
-  inRoom: 187,
-  peak: 203,
+  registered: 118,
+  inRoom: 84,
+  peak: 91,
   stage: [
     { name: "Mei Ling Tan", role: "Host", photo: "/images/members/mei-ling-tan.jpg", speaking: true },
     { name: "Daniel Reyes", role: "Speaker", photo: "/images/members/daniel-reyes.jpg" },
