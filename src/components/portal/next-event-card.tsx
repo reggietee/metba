@@ -69,7 +69,7 @@ export function NextEventCard({ event }: { event: MetbaEvent }) {
           <p className="text-kicker text-brand">
             {state === "upcoming" ? "Your next CPD event" : state === "doors" ? "Starting soon" : "Happening now"}
           </p>
-          <h2 className="mt-3 font-display text-[1.875rem] leading-tight tracking-[-0.012em]">{event.title}</h2>
+          <h2 className="mt-3 font-display text-[1.875rem] leading-tight tracking-[0.005em]">{event.title}</h2>
           <p className="text-meta mt-3 text-subtle">
             <LocalTime startsAt={event.startsAt} endsAt={event.endsAt} timezone={event.timezone} /> ·{" "}
             {formatLabels[event.format]}

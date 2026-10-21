@@ -44,7 +44,7 @@ export default async function DashboardPage() {
         </PortalSection>
 
         <PortalSection title="Your CPD in 2026" className="border-t border-line lg:border-t-0 lg:border-l">
-          <p className="font-display text-[3.5rem] leading-none tracking-[-0.02em]">
+          <p className="font-display text-[3.5rem] leading-none tracking-[-0.005em]">
             {hours}
             <span className="ml-2 align-baseline font-sans text-base text-subtle">hours logged</span>
           </p>

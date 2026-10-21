@@ -13,7 +13,7 @@ export function InsightRow({ insight }: { insight: Insight }) {
           <span className="block">{topicBySlug[insight.topics[0]].short}</span>
         </p>
         <div className="md:col-span-9">
-          <h3 className="font-display text-[1.625rem] leading-tight tracking-[-0.01em]">
+          <h3 className="font-display text-[1.625rem] leading-tight tracking-[0.005em]">
             <Link
               href={`/insights/${insight.slug}`}
               className="decoration-line-strong underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline"
@@ -38,7 +38,7 @@ export function RecapRow({ recap }: { recap: Recap }) {
           <span className="block text-brand">Recap</span>
         </p>
         <div className="md:col-span-9">
-          <h3 className="font-display text-[1.625rem] leading-tight tracking-[-0.01em]">
+          <h3 className="font-display text-[1.625rem] leading-tight tracking-[0.005em]">
             <Link
               href={`/events/${recap.eventSlug}`}
               className="decoration-line-strong underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline"

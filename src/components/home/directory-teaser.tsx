@@ -26,7 +26,7 @@ export function DirectoryTeaser() {
               name="q"
               type="search"
               placeholder="Name, country or topic"
-              className="w-full min-w-0 bg-transparent font-display text-3xl tracking-[-0.01em] text-ink placeholder:text-subtle focus-visible:outline-none md:text-5xl"
+              className="w-full min-w-0 bg-transparent font-display text-3xl tracking-[0.005em] text-ink placeholder:text-subtle focus-visible:outline-none md:text-5xl"
             />
             <button
               type="submit"

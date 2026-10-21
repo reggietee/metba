@@ -22,7 +22,7 @@ export function TopicsIndex({ topics, hideHeading }: { topics: Topic[]; hideHead
             <li key={t.slug} className="border-t border-line">
               <Link href={`/topics/${t.slug}`} className="group flex items-start justify-between gap-6 py-6 md:py-7">
                 <span>
-                  <span className="block font-display text-[1.625rem] leading-tight tracking-[-0.012em] text-ink transition-colors duration-300 group-hover:text-brand md:text-[1.875rem]">
+                  <span className="block font-display text-[1.625rem] leading-tight tracking-[0.005em] text-ink transition-colors duration-300 group-hover:text-brand md:text-[1.875rem]">
                     {t.name}
                   </span>
                   <span className="mt-2 block max-w-[46ch] text-[0.9375rem] leading-relaxed text-graphite">

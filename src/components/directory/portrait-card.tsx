@@ -30,7 +30,7 @@ export function PortraitCard({ profile, suffix }: { profile: DirectoryProfile; s
           </div>
         )}
       </div>
-      <h3 className="mt-4 font-display text-[1.5rem] leading-tight tracking-[-0.01em]">
+      <h3 className="mt-4 font-display text-[1.5rem] leading-tight tracking-[0.005em]">
         <Link
           href={`/directory/${p.slug}${suffix}`}
           className="decoration-line-strong underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline"

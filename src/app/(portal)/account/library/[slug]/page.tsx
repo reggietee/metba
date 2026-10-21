@@ -52,7 +52,7 @@ export default async function RecordingPage({ params }: PageProps<"/account/libr
             <p className="text-meta mt-6 text-subtle">
               {formatShortDate(r.heldAt)} · {formatLabels[r.format]} · With {r.speakers.join(", ")}
             </p>
-            <h1 className="mt-3 font-display text-[2.25rem] leading-tight tracking-[-0.015em] md:text-[2.75rem]">{r.title}</h1>
+            <h1 className="mt-3 font-display text-[2.25rem] leading-tight tracking-[0em] md:text-[2.75rem]">{r.title}</h1>
             <p className="mt-4 max-w-[62ch] text-lead text-graphite">{r.summary}</p>
             <div className="mt-6 flex flex-wrap gap-2">
               <Button variant="outline" size="sm">

@@ -117,7 +117,7 @@ export function PortalHeader({
     <div className="flex flex-col gap-5 border-b border-line px-5 pt-8 pb-7 md:flex-row md:items-end md:justify-between md:px-10 md:pt-10">
       <div>
         {kicker ? <p className="text-kicker mb-3 text-brand">{kicker}</p> : null}
-        <h1 className="font-display text-[2.25rem] leading-tight tracking-[-0.015em] md:text-[2.75rem]">{title}</h1>
+        <h1 className="font-display text-[2.25rem] leading-tight tracking-[0em] md:text-[2.75rem]">{title}</h1>
         {description ? <p className="mt-2 max-w-[60ch] text-[0.9375rem] text-graphite">{description}</p> : null}
       </div>
       {actions ? <div className="flex shrink-0 flex-wrap gap-2">{actions}</div> : null}
@@ -140,7 +140,7 @@ export function PortalSection({
     <section className={cn("px-5 py-8 md:px-10", className)}>
       {title ? (
         <div className="mb-5 flex items-baseline justify-between gap-4">
-          <h2 className="font-display text-[1.625rem] leading-tight tracking-[-0.01em]">{title}</h2>
+          <h2 className="font-display text-[1.625rem] leading-tight tracking-[0.005em]">{title}</h2>
           {action}
         </div>
       ) : null}

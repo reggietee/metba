@@ -7,7 +7,7 @@ export function Prose({ children, className }: { children: React.ReactNode; clas
     <div
       className={cn(
         "text-body max-w-[66ch] text-graphite",
-        "[&>*+*]:mt-6 [&_h2]:mt-14 [&_h2]:font-display [&_h2]:text-[1.875rem] [&_h2]:leading-tight [&_h2]:tracking-[-0.012em] [&_h2]:text-ink",
+        "[&>*+*]:mt-6 [&_h2]:mt-14 [&_h2]:font-display [&_h2]:text-[1.875rem] [&_h2]:leading-tight [&_h2]:tracking-[0.005em] [&_h2]:text-ink",
         "[&_h3]:mt-10 [&_h3]:text-[1.125rem] [&_h3]:font-semibold [&_h3]:text-ink",
         "[&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5 [&_li]:pl-1 [&_li]:marker:text-subtle",
         "[&_a]:text-ink [&_a]:underline [&_a]:decoration-line-strong [&_a:hover]:decoration-ink [&_strong]:font-semibold [&_strong]:text-ink",

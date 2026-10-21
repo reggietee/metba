@@ -53,7 +53,7 @@ export default function PublicLibraryPage() {
           </div>
           <div className="lg:col-span-4">
             <p className="text-kicker text-brand">Free to watch</p>
-            <h2 id="free-title" className="mt-3 font-display text-[2rem] leading-tight tracking-[-0.012em]">
+            <h2 id="free-title" className="mt-3 font-display text-[2rem] leading-tight tracking-[0.005em]">
               {sample.title}
             </h2>
             <p className="text-meta mt-3 text-subtle">

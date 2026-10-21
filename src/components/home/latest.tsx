@@ -51,7 +51,7 @@ export function Latest({ insights, recap }: { insights: Insight[]; recap: Recap 
                 <p className="text-meta text-subtle">
                   {topicBySlug[i.topics[0]].name} · {i.readingMinutes} min read
                 </p>
-                <h3 className="mt-3 font-display text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-3 font-display text-2xl leading-tight tracking-[0.005em]">
                   <Link href={`/insights/${i.slug}`} className="after:absolute after:inset-0 after:content-[''] group-hover:underline decoration-line-strong underline-offset-4">
                     {i.title}
                   </Link>
@@ -62,7 +62,7 @@ export function Latest({ insights, recap }: { insights: Insight[]; recap: Recap 
             {recap ? (
               <article className="group relative border-t border-line pt-7">
                 <p className="text-kicker text-brand">Event recap</p>
-                <h3 className="mt-3 font-display text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-3 font-display text-2xl leading-tight tracking-[0.005em]">
                   <Link href={`/events/${recap.eventSlug}`} className="after:absolute after:inset-0 after:content-[''] group-hover:underline decoration-line-strong underline-offset-4">
                     {recap.title}
                   </Link>

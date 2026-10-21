@@ -13,7 +13,7 @@ export function DirectoryRow({ profile, suffix }: { profile: DirectoryProfile; s
       <div className="grid grid-cols-[4rem_1fr] gap-x-4 gap-y-4 py-7 md:grid-cols-[5.5rem_1fr_17rem] md:gap-x-7">
         <ProfilePhoto photo={p.photo} initials={p.initials} name={p.fullName} size={88} className="size-16 text-xl md:size-[5.5rem] md:text-2xl" />
         <div className="min-w-0">
-          <h3 className="font-display text-[1.75rem] leading-tight tracking-[-0.01em]">
+          <h3 className="font-display text-[1.75rem] leading-tight tracking-[0.005em]">
             <Link
               href={`/directory/${p.slug}${suffix}`}
               className="decoration-line-strong underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline"

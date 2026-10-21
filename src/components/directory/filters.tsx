@@ -75,7 +75,7 @@ export function DirectoryFiltersForm({
           type="search"
           defaultValue={values.q ?? ""}
           placeholder="Name, firm, country or topic"
-          className="w-full min-w-0 bg-transparent font-display text-3xl tracking-[-0.01em] text-ink placeholder:text-subtle focus-visible:outline-none md:text-[2.5rem]"
+          className="w-full min-w-0 bg-transparent font-display text-3xl tracking-[0.005em] text-ink placeholder:text-subtle focus-visible:outline-none md:text-[2.5rem]"
         />
         <Button type="submit" size="lg" className="shrink-0">
           Search

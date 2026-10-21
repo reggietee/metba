@@ -46,7 +46,7 @@ export function RecordingCard({ r, href, locked }: { r: Recording; href: string;
       <p className="text-meta mt-4 text-subtle">
         {formatShortDate(r.heldAt)} · {formatLabels[r.format]} · {r.cpdHours} CPD {r.cpdHours === 1 ? "hour" : "hours"}
       </p>
-      <h3 className="mt-2 font-display text-[1.5rem] leading-tight tracking-[-0.01em]">
+      <h3 className="mt-2 font-display text-[1.5rem] leading-tight tracking-[0.005em]">
         <Link href={href} className="decoration-line-strong underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline">
           {r.title}
         </Link>
