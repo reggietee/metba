@@ -1,12 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Libre_Caslon_Display, Libre_Caslon_Text, Libre_Franklin } from "next/font/google";
-import { Suspense } from "react";
 
-import { AnnouncementBar } from "@/components/site/announcement-bar";
-import { SiteFooter } from "@/components/site/site-footer";
-import { SiteHeader } from "@/components/site/site-header";
 import { ThemeProvider } from "@/components/site/theme-provider";
-import { getAnnouncement } from "@/lib/data";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -44,10 +39,6 @@ export const viewport: Viewport = {
   ],
 };
 
-async function Announcement() {
-  return <AnnouncementBar announcement={await getAnnouncement()} />;
-}
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -67,14 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to content
           </a>
-          <Suspense>
-            <Announcement />
-          </Suspense>
-          <SiteHeader />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          {children}
         </ThemeProvider>
       </body>
     </html>

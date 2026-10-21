@@ -43,6 +43,7 @@ export const footerNav = [
     links: [
       { href: "/events", label: "Upcoming events" },
       { href: "/events/past", label: "Past events and recaps" },
+      { href: "/events/library", label: "CPD library" },
       { href: "/insights", label: "Insights" },
       { href: "/topics", label: "Topics" },
     ],

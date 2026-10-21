@@ -33,9 +33,14 @@ export default async function EventsPage() {
         title="Upcoming events"
         standfirst="Webinars, roundtables and member meetings. Times are shown in your time zone. Many events are eligible for CPD; each event page explains how."
         aside={
-          <Button asChild variant="outline" className="mt-8">
-            <Link href="/events/past">Past events and recaps</Link>
-          </Button>
+          <div className="mt-8 flex flex-wrap gap-2">
+            <Button asChild variant="outline">
+              <Link href="/events/library">CPD library</Link>
+            </Button>
+            <Button asChild variant="ghost">
+              <Link href="/events/past">Past events and recaps</Link>
+            </Button>
+          </div>
         }
       />
       <div className="container-site space-y-16 pb-24 md:space-y-20 md:pb-32">

@@ -2,7 +2,7 @@
 
 import { useActionState, useId } from "react";
 
-import { reportProfile, sendContactMessage, type FormState } from "@/app/directory/actions";
+import { reportProfile, sendContactMessage, type FormState } from "@/app/(site)/directory/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 

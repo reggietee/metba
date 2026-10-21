@@ -19,6 +19,19 @@ const routes = [
   "/directory",
   "/directory?view=list",
   "/directory/adaeze-okafor",
+  "/join",
+  "/sign-in",
+  "/events/library",
+  "/verify/adaeze-okafor",
+  "/account",
+  "/account/live/tokenized-funds-across-jurisdictions",
+  "/account/library",
+  "/account/cpd",
+  "/account/profile",
+  "/account/badge",
+  "/admin",
+  "/admin/applications",
+  "/admin/events/tokenized-funds-across-jurisdictions/live",
   "/styleguide",
 ];
 
@@ -28,7 +41,7 @@ for (const scheme of ["light", "dark"] as const) {
       await page.emulateMedia({ reducedMotion: "reduce" });
       await page.addInitScript((t) => localStorage.setItem("theme", t), scheme);
       await page.goto(route);
-      await expect(page).toHaveTitle(/MetBA/);
+      await expect(page).toHaveTitle(/MetBA|Member portal|Admin/);
       const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
       expect(results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(", ")}`)).toEqual([]);
     });
