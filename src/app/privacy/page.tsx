@@ -84,7 +84,8 @@ export default function PrivacyPage() {
       <h2>Who can see your profile</h2>
       <p>
         You choose your profile&apos;s visibility: hidden, members only (the default), or public. The public only ever
-        sees a reduced profile: name, photo, headline, country and topics. Your email address is never shown. Members
+        sees a public summary: name, photo, headline, city and country, self-reported jurisdictions, practice areas and
+        any social links you add. Your organisation, biography and languages are shown to signed-in members only. Your email address is never shown. Members
         contact each other through a relay form.
       </p>
 

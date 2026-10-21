@@ -200,7 +200,7 @@ export const membershipFaqs: Faq[] = [
   },
   {
     q: "Who can see my profile?",
-    a: "You choose. Profiles can be hidden, visible to members only (the default), or public. The public only ever sees a reduced profile, and email addresses are never shown.",
+    a: "You choose. Profiles can be hidden, visible to members only (the default), or public. A public profile shows your name, photo, headline, location, self-reported jurisdictions, practice areas and social links. Email addresses are never shown.",
   },
   {
     q: "Can I export or delete my data?",
