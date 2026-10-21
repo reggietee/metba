@@ -170,7 +170,6 @@ export const people: Person[] = [
   { name: "Aaron Grinhaus", role: "Founder", organisation: "Grinhaus Law Firm", group: "board" },
   { name: "Madaline Zannes", role: "Founder", organisation: "Zannes Law Firm", group: "board" },
   { name: "Reggie Tan", role: "Founder", organisation: "Story Mode Web3 Marketing", group: "board" },
-  { name: "Amy Trachter", role: "Founder", organisation: "The Brillo Agency", group: "board" },
   { name: "Mitch Jackson", role: "Lawyer and Co-Founder", organisation: "Jackson & Wilson and ManeuVR", group: "advisory" },
   { name: "Harrison Jordan", role: "Lawyer", organisation: "The NFT Lawyer", group: "advisory" },
   { name: "Sherena Hussain", role: "Lawyer and Founder", organisation: "Academic Collaboration Consulting", group: "advisory" },

@@ -10,7 +10,7 @@ Copy marked `[DRAFT]` is mine and needs your review. Items marked **(Q)** are op
 
 - Logo (`/wp-content/uploads/2024/08/1efa…b3.png`) is a **white-only PNG** with no brand colour. So the accent falls back to the deep green `#1F4D47` from the brief, unless the SVG you send has a colour in it.
 - The homepage and About page both carry the licensure claim ("verified professionals who are actively licensed", "verified by licenses in each respective jurisdiction"). None of this wording will be carried over.
-- Leadership on the About page: Founding Board (Aaron Grinhaus, Madaline Zannes, Reggie Tan, Amy Trachter) and Global Advisory Board (Mitch Jackson, Harrison Jordan, Sherena Hussain, Michael Kasdan, Tara Frater, John Tengström). I will use these names in mock data, with placeholder bios marked `[DRAFT]` until you send the real ones. **(Q1)**
+- Leadership on the About page: Founding Board (Aaron Grinhaus, Madaline Zannes, Reggie Tan) and Global Advisory Board (Mitch Jackson, Harrison Jordan, Sherena Hussain, Michael Kasdan, Tara Frater, John Tengström). I will use these names in mock data, with placeholder bios marked `[DRAFT]` until you send the real ones. **(Q1)**
 - Old URLs to redirect: `/about/`, `/members/`, `/events/`, `/become-a-member/`, `/login/`.
 
 ## 2. Stack and versions (checked on npm today)
