@@ -54,9 +54,8 @@ Revised after the design pass (typeset, bolder, colorize, critique, polish, anim
 
 ### Type
 
-- **Display:** Libre Caslon Display, regular only, tightened tracking. Caslon is the typeface of legal printing.
-- **Quotes:** Libre Caslon Text italic.
-- **Text and UI:** Libre Franklin, a Franklin Gothic revival (the American newspaper sans).
+- **Typefaces (editorial pairing, Oct 2026):** Freight Big Pro Light for headlines and quotes, Acumin Pro for text and UI, both from Adobe Fonts via MetBA's Creative Cloud web project (`NEXT_PUBLIC_ADOBE_FONTS_KIT`).
+- **Fallback (always loaded, free):** Libre Caslon Display, Libre Caslon Text italic and Libre Franklin. Used if the Adobe kit is not configured or fails, so the site never breaks.
 - **No monospace and no all-caps labels.** Small labels are sentence-case Franklin (`text-kicker`, `text-meta`).
 - **Scale:** perfect fourth (1.333). Fluid `clamp()` for display sizes; body text fixed at 17px with 1.65 line height.
 - **Fallback:** a hand-tuned fallback face (Times at 90.3%) so the hero doesn't reflow when the web font loads (CLS 0).

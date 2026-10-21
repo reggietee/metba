@@ -5,7 +5,11 @@ import { ThemeProvider } from "@/components/site/theme-provider";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Caslon: the face of legal printing. Franklin Gothic: the American newsroom sans.
+// Adobe Fonts web project (Freight Big Pro Light + Light Italic, Acumin Pro). Optional:
+// without it the free Libre fonts below are used. Only the ID is needed, not the full embed code.
+const adobeFontsKit = process.env.NEXT_PUBLIC_ADOBE_FONTS_KIT?.match(/^[a-z0-9]{5,12}$/)?.[0];
+
+// Fallback fonts. Caslon: the face of legal printing. Franklin Gothic: the American newsroom sans.
 // Metric-matched fallback (measured: Times at 90.3% matches Caslon Display's widths), so the hero
 // does not reflow when the web font arrives. The automatic fallback wrapped it onto an extra line.
 const caslonFallbackCss = `@font-face{font-family:"Caslon Display Fallback";src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Times"),local("Liberation Serif");size-adjust:90.3%;ascent-override:97%;descent-override:27%;line-gap-override:0%}`;
@@ -47,6 +51,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${franklin.variable} ${caslonDisplay.variable} ${caslonText.variable} antialiased`}
     >
       <head>
+        {adobeFontsKit ? (
+          <>
+            <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+            <link rel="stylesheet" href={`https://use.typekit.net/${adobeFontsKit}.css`} />
+          </>
+        ) : null}
         <style dangerouslySetInnerHTML={{ __html: caslonFallbackCss }} />
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>

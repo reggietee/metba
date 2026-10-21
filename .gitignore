@@ -44,3 +44,6 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 .shot.mjs
+
+# example env file is safe to commit
+!.env.example

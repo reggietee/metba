@@ -106,9 +106,12 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-franklin), "Franklin Gothic", ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-caslon-display);
-  --font-quote: var(--font-caslon-text), Georgia, serif;
+  /* Editorial pairing from Adobe Fonts (Freight Big Pro + Acumin Pro), loaded when
+     NEXT_PUBLIC_ADOBE_FONTS_KIT is set. The free Libre fonts stay as the fallback, so the
+     site still renders if the kit is missing or the subscription lapses. */
+  --font-sans: "acumin-pro", var(--font-franklin), "Franklin Gothic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "freight-big-pro", var(--font-caslon-display);
+  --font-quote: "freight-big-pro", var(--font-caslon-text), Georgia, serif;
   --font-heading: var(--font-display);
 
   --radius-sm: 2px;

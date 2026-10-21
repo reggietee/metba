@@ -99,7 +99,8 @@ export default function PrivacyPage() {
       <h2>Service providers and international transfers</h2>
       <p>
         We use service providers to run the site, including hosting (Vercel), database and file storage (Supabase), sign-in
-        (Clerk), email (Resend) and spam protection (Cloudflare Turnstile). They process information on our instructions.
+        (Clerk), email (Resend), spam protection (Cloudflare Turnstile) and web fonts (Adobe Fonts, which receives
+        your IP address and browser details when it delivers the site&apos;s typefaces). They process information on our instructions.
         Some are located outside your country. Where information is transferred internationally we rely on appropriate
         safeguards, such as adequacy decisions or standard contractual clauses. [DRAFT: confirm providers and regions.]
       </p>

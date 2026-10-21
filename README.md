@@ -12,6 +12,7 @@ npm run build && npm run test:e2e   # accessibility and layout checks (Playwrigh
 ```
 
 - `/styleguide` shows every token and component (not indexed).
+- Fonts: copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_ADOBE_FONTS_KIT` to the Adobe Fonts web project ID (Freight Big Pro Light and Light Italic, Acumin Pro Regular, Italic, Medium, Semibold). Without it the site uses the free Libre fallbacks. Set the same variable in Vercel.
 - All data comes through `src/lib/data.ts`. In Phase 0 and 1 it returns mock data from `src/lib/mock/`.
 - Copy that needs review is marked `[DRAFT]` in the source.
 
