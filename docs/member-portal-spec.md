@@ -209,6 +209,92 @@ A plain link around an image works on WordPress, Squarespace, Wix, Webflow and h
 - `/verify/[slug]` pages are indexable only for members with public profiles.
 - Badge images are served with `Cache-Control` and an `ETag` to keep load on our server negligible.
 
+## 7A. Design direction from research (October 2026)
+
+Research into well-designed webinar products, video libraries and membership badges. Sources are listed at the end of this section. These changes apply to the Phase 1 preview once the founding partners approve the overall plan.
+
+### 7A.1 Principles carried across all three
+
+- **Calm interfaces.** Fewer decisions per screen, auto-hiding secondary controls, motion only to explain a change of state (Envato 2026 trends; Mux playback guide).
+- **Accessibility built in from the start.** Live captions on by default, full keyboard operation, 4.5:1 contrast, screen-reader support for chat, Q&A and polls, reduced motion. This is now the baseline expectation for event platforms.
+- **Trust you can check.** Every claim of status (live attendance, CPD hours, membership) shows its source and can be verified. This matters especially for a bar association.
+
+### 7A.2 Live CPD room (webinar)
+
+What the best products do, and what we adopt:
+
+| Pattern | Seen in | MetBA adoption |
+|---|---|---|
+| A branded "show", not a meeting grid | Riverside (lower thirds, logo, colours, comments pulled on screen) | Lower thirds for speakers in MetBA type (name, role, firm). Pinned questions appear on screen as a card for everyone. A quiet MetBA mark in the corner of the stage |
+| A lobby that sets expectations | Livestorm, Luma (clean registration and waiting pages) | A **lobby** before doors open: countdown, agenda, speaker bios, "test your audio" check, and how attendance is recorded |
+| Device check before joining | Livestorm, StreamYard | Camera and microphone preview for speakers; a sound check for attendees |
+| Interaction that doesn't take over | Livestorm (polls, Q&A, reactions) | Moderated Q&A with upvotes (in the preview), **polls** (add), and restrained reactions limited to applause and a thumbs up, shown briefly and never covering speakers |
+| Live captions by default | ON24, Cvent, Airmeet and others | Captions on by default with a size control. The transcript becomes the recap's searchable text |
+| Agenda awareness | Event platforms | A slim "Now: Singapore pilots · Next: EU" bar driven by the agenda, so late joiners know where they are |
+| Visible attendance | (MetBA-specific) | A small, honest indicator: "Attendance recorded: 47 min", so members trust their CPD record |
+| A good ending | Peak-end rule | The ended state shows time attended, when the certificate will arrive, a two-question feedback form, and the next event |
+
+Layout: the stage gets about 70% of the width. Chat, Q&A and polls share one side panel with tabs, which collapses to a sheet on mobile. Controls auto-hide after 3 seconds of no input (except under reduced motion). Keyboard shortcuts: **H** raise hand, **C** captions, **Q** question box, **L** layout.
+
+### 7A.3 CPD library (video)
+
+| Pattern | Seen in | MetBA adoption |
+|---|---|---|
+| Curated collections, not just a grid | Criterion Channel ("programs") | **Collections** such as "Start here: digital asset regulation" or "Professional responsibility and AI", with an editor's note |
+| Continue watching and progress on cards | Netflix, YouTube, Coursera | Continue-watching row first. Every card shows duration, CPD hours and progress |
+| Cinematic but quiet player | MasterClass | Large poster frame; thin progress bar that grows on hover; controls auto-hide; preview thumbnails while scrubbing |
+| Learning tools beside the video | Coursera and enterprise video platforms | **Chapters** plus a **searchable transcript** panel synced to playback (click a line to jump). Speed control, captions, downloadable slides |
+| Fast start | Mux playback guidance | Adaptive streaming that starts at lower quality and scales up; poster image loads first |
+| Taster for non-members | (conversion pattern) | Public visitors get the one free recording plus a **2-minute preview** of each locked recording, then a "Join to keep watching" card |
+
+The CPD rule stays as in section 3.4: a "viewed recording" entry once 90% has been watched, with a progress ring on the card that fills as the member watches.
+
+### 7A.4 Membership badge widget
+
+| Pattern | Seen in | MetBA adoption |
+|---|---|---|
+| A dynamic seal that links to a live verification page | BBB Dynamic Seal (shows status and date, "click to verify") | Already the core design. Add the microcopy "Click to verify" on the full badge |
+| Bound to one person | BBB (business name on the seal), Super Lawyers (name and year in alt text) | The full badge shows the **member's name** ("Adaeze Okafor · Verified member 2026") so it can't be copied onto someone else's site; the alt text includes name and year |
+| Footer-friendly size | Trust badge guidance (40 to 60px high, matches site palette) | Heights of 48 and 64px. Light, dark and an **auto** style that follows the visitor's light or dark preference (needs testing in each browser) |
+| Rules of use | Grant Professionals Association, UK-SBA, PGA member badge policies | A short badge policy at `/badge-policy`: individual members in good standing only; not on firm-wide marketing implying firm membership; no altering the artwork; always linked to MetBA; never implying endorsement, licensing or accreditation |
+| Portable, verifiable credential | Open Badges 3.0 (W3C Verifiable Credentials), Credly | Later phase: issue membership as an **Open Badges 3.0** credential that members can add to LinkedIn and digital wallets. The website badge remains the simple first step |
+
+Misuse controls: record which domains load each badge (domain only), let admins revoke a badge, and switch it to "not current" the moment membership lapses.
+
+### 7A.5 Changes to Phase 1 preview after approval
+
+1. Live room:
+   - add the lobby, device check, agenda bar, polls tab, reactions and attendance indicator
+   - give speaker tiles lower thirds
+   - show pinned questions as an on-stage card
+2. Library:
+   - add a collections row and a continue-watching row
+   - add a transcript panel synced to the player
+   - add the 2-minute preview for locked recordings on the public page
+3. Badge:
+   - add the member's name to the full badge, the "auto" style and the "Click to verify" microcopy
+   - add a draft `/badge-policy` page
+4. Run the `critique` and `polish` design passes again on the portal screens.
+
+### 7A.6 Sources
+
+- [Riverside: best webinar platforms 2026](https://riverside.com/blog/webinar-platforms)
+- [ON24: best webinar platforms 2026](https://www.on24.com/blog/the-best-webinar-platforms-of-2026/)
+- [Livestorm review 2026](https://work-management.org/marketing/creators/livestorm-review/)
+- [Luma review 2026](https://contentmation.com/marketing-tools/luma)
+- [Virtual event platforms 2026 (captions, accessibility)](https://www.forasoft.com/blog/article/multimedia-solutions-virtual-events)
+- [Envato: UX/UI trends 2026](https://elements.envato.com/learn/ux-ui-design-trends)
+- [Eleken: video player UI patterns](https://www.eleken.co/blog-posts/video-player-ui)
+- [Mux: video playback best practices](https://www.mux.com/articles/best-practices-for-video-playback-a-complete-guide-2025)
+- [Video player accessibility](https://accessible.org/video-player-accessibility-best-practices/)
+- [BBB Dynamic Seal](https://www.bbb.org/mississippi/public/bbbseal/)
+- [Super Lawyers badge display](https://www.themodernfirm.com/how-to-display-super-lawyers-listing-on-website/)
+- [Trust badge placement and sizing](https://kinsta.com/blog/trust-badges/)
+- [GPA member badge policy](https://grantprofessionals.org/page/logopolicy)
+- [UK-SBA badge guidelines](https://uk-sba.org/wp-content/uploads/2026/04/cpd-2765-20260408-115820.pdf)
+- [Open Badges 3.0 status 2026](https://www.virtualbadge.io/blog-articles/open-badges-3-0-what-is-the-status-in-2026)
+- [Credly and Open Badges 3.0](https://learn.credly.com/blog/credly-supports-open-badge-3.0)
+
 ## 8. Data model additions
 
 These add to the `PLAN.md` model:
