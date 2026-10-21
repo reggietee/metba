@@ -18,3 +18,15 @@ Placeholder photography until MetBA event photos are supplied. All images are fr
 | public/images/towers.jpg | photo-1486406146926-c627a92ad1ab |
 
 `public/brand/logo-*.png` are derived from the logo on the current metba.io and will be replaced by the SVG.
+
+## Placeholder member portraits
+
+Unsplash portraits used only to show the directory design with the five fictitious sample lawyers. They are real people unconnected to MetBA, so **remove them before launch** and replace with members' own uploaded photos.
+
+| File | Unsplash photo |
+|---|---|
+| public/images/members/adaeze-okafor.jpg | photo-1531123897727-8f129e1688ce |
+| public/images/members/mei-ling-tan.jpg | photo-1534528741775-53994a69daeb |
+| public/images/members/nadia-haddad.jpg | photo-1567532939604-b6b5b0db2604 |
+| public/images/members/sofia-marchetti.jpg | photo-1607746882042-944635dfe10e |
+| public/images/members/daniel-reyes.jpg | photo-1500648767791-00dcc994a43e |

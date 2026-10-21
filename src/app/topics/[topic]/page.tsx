@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { MemberCard } from "@/components/cards/member-card";
+import { DirectoryRow } from "@/components/directory/directory-row";
 import { EventList } from "@/components/page/event-row";
 import { InsightRow, RecapRow } from "@/components/page/insight-row";
 import { PageHeader, SplitSection } from "@/components/page/page-header";
@@ -80,11 +80,11 @@ export default async function TopicPage({ params }: PageProps<"/topics/[topic]">
           title="Members working on this"
           intro="Members who list this topic and have chosen a public profile."
         >
-          <div className="grid gap-8 sm:grid-cols-2">
+          <ul className="border-b border-line">
             {content.members.map((m) => (
-              <MemberCard key={m.slug} member={m} />
+              <DirectoryRow key={m.slug} profile={m} suffix="" />
             ))}
-          </div>
+          </ul>
         </SplitSection>
       ) : null}
     </>

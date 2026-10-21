@@ -64,7 +64,8 @@ export function formatEventTime(startIso: string, endIso: string, timeZone: stri
   return `${start} to ${f.format(new Date(endIso))}`;
 }
 
-export function formatShortDate(iso: string) {
+export function formatShortDate(iso: string | undefined) {
+  if (!iso) return "";
   return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(
     new Date(iso.length === 10 ? `${iso}T12:00:00Z` : iso),
   );

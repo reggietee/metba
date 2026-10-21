@@ -9,7 +9,7 @@ import {
   stats,
 } from "@/lib/mock/content";
 import { events, recaps } from "@/lib/mock/events";
-import { members } from "@/lib/mock/members";
+import { searchDirectory } from "@/lib/directory";
 import { topicBySlug, topics } from "@/lib/mock/topics";
 import type { SiteStats, TopicSlug } from "@/lib/types";
 
@@ -69,7 +69,8 @@ export async function getTopicContent(slug: TopicSlug) {
     events: (await getUpcomingEvents()).filter(has),
     insights: (await getInsights()).filter(has),
     recaps: (await getRecaps()).filter(has),
-    members: members.filter((m) => m.status === "verified" && m.visibility === "public" && has(m)),
+    // Public projection only: topic pages are public, so they get the same reduced profile as the directory.
+    members: (await searchDirectory({ topic: slug }, { kind: "public" })).results,
   };
 }
 
@@ -79,9 +80,6 @@ export async function getPeople() {
 }
 export async function getMembershipFaqs() {
   return membershipFaqs;
-}
-export async function getMembers() {
-  return members;
 }
 
 /** Only returns counts that clear their threshold, so small numbers never show. */

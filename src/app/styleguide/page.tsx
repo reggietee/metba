@@ -5,10 +5,11 @@ import { Eyebrow } from "@/components/brand/eyebrow";
 import { VerifiedBadge } from "@/components/brand/verified-badge";
 import { EventCard } from "@/components/cards/event-card";
 import { InsightCard } from "@/components/cards/insight-card";
-import { MemberCard } from "@/components/cards/member-card";
+import { DirectoryRow } from "@/components/directory/directory-row";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { getLatestInsights, getMembers, getUpcomingEvents } from "@/lib/data";
+import { getLatestInsights, getUpcomingEvents } from "@/lib/data";
+import { searchDirectory } from "@/lib/directory";
 
 export const metadata: Metadata = { title: "Styleguide", robots: { index: false, follow: false } };
 
@@ -25,7 +26,11 @@ const swatches = [
 ] as const;
 
 export default async function StyleguidePage() {
-  const [events, insights, members] = await Promise.all([getUpcomingEvents(), getLatestInsights(1), getMembers()]);
+  const [events, insights, directory] = await Promise.all([
+    getUpcomingEvents(),
+    getLatestInsights(1),
+    searchDirectory({}, { kind: "public" }),
+  ]);
   return (
     <div className="container-site space-y-20 py-16">
       <header>
@@ -97,12 +102,19 @@ export default async function StyleguidePage() {
         />
       </section>
 
+      <section aria-labelledby="sg-directory">
+        <h2 id="sg-directory" className="text-display-md mb-6">Directory row (public view)</h2>
+        <ul className="border-b border-line">
+          <DirectoryRow profile={directory.results[0]} suffix="" />
+        </ul>
+      </section>
+
       <section aria-labelledby="sg-cards">
         <h2 id="sg-cards" className="text-display-md mb-6">Cards</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <EventCard event={events[1]} />
           <InsightCard insight={insights[0]} />
-          <MemberCard member={members[0]} />
+
         </div>
       </section>
     </div>

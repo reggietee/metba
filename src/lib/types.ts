@@ -37,7 +37,13 @@ export type Member = {
   topics: TopicSlug[];
   languages: string[];
   openToReferrals: boolean;
+  bio?: string;
+  photo?: string;
+  social: SocialLinks;
+  memberSince: string;
 };
+
+export type SocialLinks = { linkedin?: string; x?: string; website?: string };
 
 export type EventFormat = "webinar" | "in_person" | "hybrid" | "virtual_venue";
 export type CpdCategory =

@@ -16,6 +16,9 @@ const routes = [
   "/events/tokenized-funds-across-jurisdictions",
   "/events/dao-liability-after-recent-rulings",
   "/privacy",
+  "/directory",
+  "/directory?view=list",
+  "/directory/adaeze-okafor",
   "/styleguide",
 ];
 

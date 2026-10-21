@@ -20,6 +20,8 @@ const banned: [RegExp, string][] = [
   [/verified by licen[cs]e/i, "verified by licence"],
   [/licensed (member|professional)s?/i, "licensed member/professional"],
   [/trust registry/i, "trust registry"],
+  [/\badmitted\s*:/i, "\"Admitted:\" (implies verified bar admission)"],
+  [/bar admissions?/i, "bar admission"],
 ];
 
 describe("site copy rules", () => {
